@@ -1,0 +1,31 @@
+class stack:
+    def __init__(self):
+        self.stack=[]
+        self.size=5
+        self.top=-1
+    def push(self,item):
+        if self.top+1<self.size:
+            self.stack.append(item)
+            self.top+=1
+        else:
+            print('Stack is overflow')
+    def pop(self,item):
+        if self.top==-1:
+            print("STACK is Underflow")
+        else:
+            self.stack.pop()
+            self.top-=1
+    def peek(self):
+        print(self.stack[self.top])     
+    def display(self):
+        print(self.stack)
+obj=stack()
+obj.push(4)
+obj.push(6)
+obj.push(9)
+obj.push(0)
+obj.push(4)
+obj.peek()
+obj.peek()
+obj.pop(4)
+obj.display()
