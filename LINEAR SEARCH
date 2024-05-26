@@ -1,0 +1,9 @@
+def linear_search(arr, target):
+    for i in arr:
+         if i == target:return 1
+     return -1
+numbers = [10, 5, 8, 12, 3, 7]
+target_number = 8
+index = linear_search(numbers, target_number)
+if index != -1:print(f"Target number {target_number} found at index {index}")
+else:print(f"Target number {target_number} not found in the list")
