@@ -1,0 +1,32 @@
+class queue():
+    def __init__(self):
+        self.queue=[]
+        self.size=5
+        self.rear=self.front=-1
+    def enqueue(self,data):
+        if self.rear+1<self.size:
+            self.queue.append(data)
+            if self.front==-1:
+                self.front=self.rear=0
+            else:
+                self.rear+=1
+        else:
+            print('FULL')
+    def dequeue(self):
+        if self.front==-1 or self.front > self.rear:
+            print('empty queue')
+        else:
+            self.queue.pop()
+            # self.front+=1
+            self.rear-=1
+    def display(self):
+        for i in range(self.front,self.rear+1):
+            print(self.queue[i])
+obj=queue()
+obj.enqueue('hi')
+obj.enqueue('pavani')
+obj.enqueue('l')
+obj.enqueue('p')
+obj.dequeue()
+obj.dequeue()
+obj.display()
