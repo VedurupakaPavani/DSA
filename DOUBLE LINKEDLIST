@@ -1,0 +1,95 @@
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None
+class double_linkedlist:
+    def __init__(self):
+        self.head=None
+        self.tail=None
+    def insert_start(self,data):
+        newnode=node(data)
+        if self.head is None:
+            self.head=self.tail=newnode
+        else:
+            newnode.next=self.head
+            self.head.prev=newnode
+            self.head=newnode
+    def insert_end(self,data):
+        newnode=node(data)
+        if self.head is None:
+            self.head=self.tail=newnode
+        else:
+            self.tail.next=newnode
+            newnode.prev=self.tail
+            self.tail=newnode
+    def delete_start(self):
+        if self.head is None:
+            print("list is empty")
+        elif self.head==self.tail:
+            self.head=self.tail=None
+        else:
+            self.next=self.head.next
+            self.head.prev=None
+    def delete_end(self):
+        if self.head.next is None:
+            print('list is empty')
+        elif self.head==self.tail:
+            self.head=self.tail=None
+        else:
+            self.tail=self.tail.prev
+            self.tail.next=None
+    def delete_element(self,element):
+        if self.head is None:
+            print('empty list')
+        elif self.head.data==element:
+            self.head=self.head.next
+        else:
+            current=self.head
+            while current.next and current.next.data!=element:
+                current=current.next
+            if current.next is None:
+                print('no data found')
+                return
+            current.next=current.next.next
+    def delete_position(self,data,key):
+        newnode=node(data)
+        if self.head is None:
+            print("list is empty")
+        elif key==1:
+            self.delete_start()
+        else:
+            current=self.head
+            count=0
+            while current:
+                count+=1
+                if count==key:
+                    newnode.next=current
+                    newnode.prev=current.prev
+            if count<key:
+                current.next.next=newnode
+                current.prev=newnode
+            
+    def display_forward(self):
+        if self.head is None:
+            print('list is empty')
+            return
+        current=self.head
+        while current:
+            print(current.data,end='->')
+            current=current.next
+    def display_backward(self):
+        if self.tail is None:
+            print('list is empty')
+            return
+        current=self.tail
+        while current:
+            print(current.data,end='->')
+            current=current.prev
+    
+obj=double_linkedlist()
+obj.insert_start(3)
+obj.insert_start(9)
+obj.insert_start(0)
+obj.delete_position(9,2)
+obj.display_backward()
